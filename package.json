@@ -5,6 +5,7 @@
   "license": "MIT",
   "author": "Andrejs Rinkevics",
   "type": "module",
+  "packageManager": "pnpm@11.3.0",
   "bin": {
     "rigatech-mcp": "dist/index.js"
   },

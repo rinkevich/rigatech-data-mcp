@@ -98,6 +98,26 @@ RIGATECH_DATA_DIR=/path/to/rigatech-data node dist/index.js
 
 > Note: stdout is the MCP transport. All diagnostics go to **stderr** — never write to stdout.
 
+## Releasing
+
+CI (`.github/workflows/ci.yml`) runs typecheck + lint + build on every push/PR to `master`. Publishing is automated by `.github/workflows/release.yml`, which publishes to npm when a `vX.Y.Z` tag is pushed (or via manual **workflow_dispatch**).
+
+One-time setup — add an npm **automation** access token as a repo secret (automation tokens bypass 2FA, which this npm account enforces):
+
+```bash
+# npmjs.com -> Access Tokens -> Generate New Token -> "Automation"
+gh secret set NPM_TOKEN   # paste the token when prompted
+```
+
+Cut a release:
+
+```bash
+pnpm version patch        # bumps version, creates a commit + vX.Y.Z tag
+git push --follow-tags    # pushing the tag triggers the release workflow
+```
+
+The release workflow verifies the tag matches `package.json`, then runs `pnpm publish --access public` with npm provenance.
+
 ## Data source
 
 Data lives in [`github.com/rinkevich/rigatech-data`](https://github.com/rinkevich/rigatech-data) (`master`). Hosted MCP: [mcp.riga.tech](https://mcp.riga.tech). Website: [riga.tech](https://riga.tech).
