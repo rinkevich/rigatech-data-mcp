@@ -1,0 +1,13 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+.env
+.env.*
+
+# Editor / tooling
+.idea/
+.claude/
+
+# Local instruction files
+prompt*.txt

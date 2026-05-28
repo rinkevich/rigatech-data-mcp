@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "@context7/mcp": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "@rigatech/mcp": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.riga.tech"]
+    }
+  }
+}

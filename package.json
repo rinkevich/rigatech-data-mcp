@@ -1,0 +1,74 @@
+{
+  "name": "@rigatech/mcp",
+  "version": "0.1.0",
+  "description": "Local stdio MCP server exposing rigatech-data jobs/courses/events. No auth, read-only.",
+  "license": "MIT",
+  "author": "Andrejs Rinkevics",
+  "type": "module",
+  "bin": {
+    "rigatech-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/rinkevich/rigatech-data-mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rinkevich/rigatech-data-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rinkevich/rigatech-data-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "stdio",
+    "rigatech",
+    "jobs",
+    "courses",
+    "events",
+    "latvia",
+    "baltic"
+  ],
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "watch": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/index.js",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "prepublishOnly": "pnpm run build",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.25.1",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^1.4.1",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.39.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@types/node": "^20.19.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.39.0",
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": "eslint --fix",
+    "*.{js,jsx,ts,tsx,mjs,cjs,json,css,md}": "prettier --write"
+  }
+}
